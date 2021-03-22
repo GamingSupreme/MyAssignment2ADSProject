@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\joshu\Documents\Uni\Torrens\Uni Work\ADS algo\Assignment 2\Sorting an Array of Integers\Source.cpp(11,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+C:\Users\joshu\Documents\Uni\Torrens\Uni Work\ADS algo\Assignment 2\Sorting an Array of Integers\Source.cpp(30,20): warning C4018: '<': signed/unsigned mismatch
+  Sorting an Array of Integers.vcxproj -> C:\Users\joshu\Documents\Uni\Torrens\Uni Work\ADS algo\Assignment 2\Sorting an Array of Integers\Debug\Sorting an Array of Integers.exe
