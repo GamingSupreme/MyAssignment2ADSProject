@@ -1,5 +1,15 @@
 #include "List.h"
 
+void List::displayList()
+{
+	Node* iterator = Head;
+	while (iterator != NULL)
+	{
+		cout << iterator->number << endl;
+		iterator = iterator->next;
+	}
+}
+
 void List::insertAtFront(int number)
 {
 	Node* newNode = new Node(number);

@@ -10,6 +10,8 @@ class List
 public:
 	Node* Head = NULL;
 
+	void displayList();
+
 	void insertAtFront(int number);
 	void insertAtEnd(int number);
 
