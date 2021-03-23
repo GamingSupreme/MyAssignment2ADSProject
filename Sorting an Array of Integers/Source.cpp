@@ -7,15 +7,6 @@
 
 using namespace std;
 
-void displayArray(int arr[], int arraySize)
-{
-	for (int i = 0; i <= arraySize - 1; i++)
-	{
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-}
-
 void bubbleSort(int arr[], int arraySize, int order)
 {
 	bool sorted = false;
@@ -125,7 +116,7 @@ void quickSort(int a[], int low, int high, int order)
 void main()
 {
 	ifstream readFile;
-	readFile.open("Test.txt");
+	readFile.open("input-a1q1.txt");
 	int order;
 	readFile >> order;
 	int complexity;
@@ -133,7 +124,7 @@ void main()
 	int numberOfNumbers;
 	readFile >> numberOfNumbers;
 
-	if ((order != 1 || 0) || (complexity != 1 || 0))
+	if ((order != 1 && order != 0) || (complexity != 1 && complexity != 0))
 	{
 		cout << "Neither a 0 or 1 are in the first and or second row, please fix this and run again";
 		return;
@@ -145,23 +136,54 @@ void main()
 		return;
 	}
 
+
 	int* arr = new int[numberOfNumbers];
 	for (int i = 0; i < numberOfNumbers; i++)
 	{
 		readFile >> arr[i];
+		if (i < (numberOfNumbers - 1))
+		{
+			if (readFile.eof())
+			{
+				cout << "there were less numbers in row four then specified, please put in the right amount and try again" << endl;
+				return;
+			}
+		}
 	}
-
+	
 	if (complexity == 0)
 	{
+		std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 		quickSort(arr, 0, numberOfNumbers, order);
-		displayArray(arr, numberOfNumbers);
+		std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+		ofstream  writeFile;
+		writeFile.open("output-a1q1.txt");
+		writeFile << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << endl;
+		for (int i = 0; i < numberOfNumbers; i++)
+		{
+			writeFile << arr[i];
+			writeFile << " ";
+		}
+		delete[] arr;
 	}
 
 	else if (complexity == 1)
 	{
+		std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 		bubbleSort(arr, numberOfNumbers, order);
-		displayArray(arr, numberOfNumbers);
+		std::chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+		ofstream  writeFile;
+		writeFile.open("output-a1q1.txt");
+		writeFile << std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() << endl;
+		for (int i = 0; i < numberOfNumbers; i++)
+		{
+			writeFile << arr[i];
+			writeFile << " ";
+		}
+		delete[] arr;
 	}
+
+
 
 	system("pause");
 }
