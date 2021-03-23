@@ -8,5 +8,5 @@ void main()
 {
 
 
-	system("pause")
+	system("pause");
 }
